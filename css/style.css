@@ -1,0 +1,41 @@
+/* This is our main css page */
+
+
+* {box-sizing: border-box;
+   font-family: 'Sansita Swashed', cursive;}
+
+
+
+/* Remove the jumbotron's default bottom margin */ 
+.jumbotron {
+    margin-bottom: 0;
+    background-color: #F4B41A;
+    color: #143D59;
+    font-family: 'Sansita Swashed', cursive;
+  }
+
+/* Style for footer */
+.foot {
+    background-color: #143D59;
+    color: #F4B41A;
+}
+
+/* Style the icons */
+.icons {
+    font-size: 30px;
+}
+
+/* Style the Add to Cart Button */
+.add {
+  background-color: #F4B41A;
+  border: none;
+  color: #143D59;
+  padding: 15px 25px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+
+}
+
+ 
