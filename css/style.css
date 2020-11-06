@@ -38,4 +38,44 @@
 
 }
 
+/* Style the Checkout Button */
+.checkout {
+  background-color: #143D59;
+  border: none;
+  color: #F4B41A;
+  padding: 15px 25px;
+  padding-bottom: 10px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  display: flex; 
+  
+
+}
+
+/* Style the Checkout Button */
+.container1 { 
+  height: 100px;
+  position: relative;
+  
+}
+
+/* Style the Checkout Button */
+.center1 {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background-color: #143D59;
+  border: none;
+  color: #F4B41A;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  display: flex; 
+  padding: 15px 25px;
+}
+
  
