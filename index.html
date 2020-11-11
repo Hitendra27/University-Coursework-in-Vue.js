@@ -12,8 +12,11 @@
    <!-- Google Fonts-->
    <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed&display=swap" rel="stylesheet">
 
+   <!-- Font Awesome Link-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
    <!-- Add icon library -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
    <!-- CSS Link -->
     <link rel="stylesheet"  type="text/css" href="css/style.css" />
@@ -24,11 +27,13 @@
     <title>Vue.js</title>
 </head>
 <body>
+  <!-- div id app which connects to our vue-->
+  <div id="app"> 
 
   <!-- Header jumbotron-->
     <div class="jumbotron">
         <div class="container text-center">
-          <h1>After School Lounge</h1>      
+          <h1 v-text="sitename"></h1>      
           <p>"Mission, Vission & Values"</p>
         </div>
       </div>
@@ -39,15 +44,27 @@
     <h2>Welcome</h2>
     <h4>Choose a After School Plan that works for your child</h4>
   </div>
+</div>
 
   <!-- Checkout Button-->
   <div class="container1">
     <div class="center1">
-      <button class="checkout">Checkout</button>
+      
+      <button v-on:click='showCheckout'>
+        <!-- 'cartItemCount' is used the same way as a data property.-->
+    {{cartItemCount}}
+        <!-- add the cart icon -->
+        <span class="fas fa-shopping-cart"></span> Checkout
+    </button>
+  
     </div>
   </div>
-  
 
+  <main>
+
+
+    <div v-if="showProduct">
+      <div v-for="product in products">
 
   <div class="row slideanim">
     <div class="col-sm-4 col-xs-12">
@@ -57,11 +74,16 @@
         </div>
         <div class="panel-body">
 
-          <div id="app">
+  
             <header>
               
             </header>
-          <main>
+
+        
+      
+
+               
+
             <figure>
                 <!-- bind the 'src' attribute to the 'product.image' in 'data' -->
                 <img v-bind:src="product.image" width="150px" height="150px">
@@ -73,191 +95,129 @@
             <p>Price: £ {{product.price}}</p>
 
             <p>Spaces: {{product.spaces}}</p>
-        </main>
+        
+          
+     
           </div>
-         
-        </div>
-        <div class="panel-footer">
-          <button class="btn add btn-lg">Add to Cart</button>
+          
+        
+         <div class="panel-footer">
+          <button class="btn add btn-lg"
+                 v-on:click="addToCart"
+                 v-if="canAddToCart">
+                 <!-- only show the button when 'canAddToCart' is true -->
+                 Add to cart</button>
+
+                 <!-- This button will be displayed otherwise-->
+                 <button class="btn add btn-lg"
+                         disabled='disabled' v-else>
+                   Add to cart
+                 </button>
         </div>
       </div>      
     </div>     
-    <div class="col-sm-4 col-xs-12">
-      <div class="panel panel-default text-center">
-        <div class="panel-heading">
-          <h1></h1>
-        </div>
-        <div class="panel-body">
-          <p><strong>50</strong> Lorem</p>
-          <p><strong>25</strong> Ipsum</p>
-          <p><strong>10</strong> Dolor</p>
-          <p><strong>5</strong> Sit</p>
-          <p><strong>Endless</strong> Amet</p>
-        </div>
-        <div class="panel-footer">
-          <button class="btn add btn-lg">Add to Cart</button>
-        </div>
-      </div>      
-    </div>       
-    <div class="col-sm-4 col-xs-12">
-      <div class="panel panel-default text-center">
-        <div class="panel-heading">
-          <h1></h1>
-        </div>
-        <div class="panel-body">
-          <p><strong>100</strong> Lorem</p>
-          <p><strong>50</strong> Ipsum</p>
-          <p><strong>25</strong> Dolor</p>
-          <p><strong>10</strong> Sit</p>
-          <p><strong>Endless</strong> Amet</p>
-        </div>
-        <div class="panel-footer">
-          <button class="btn add btn-lg">Add to Cart</button>
-        </div>
-      </div>      
-    </div>    
-  </div>
-</div>     
+   
+
+</div>
+
+</div>
+</div>
 
 
-<div id="pricing" class="container-fluid">
- 
+
+
+
+<!-- The Checkout page every time we click on the 
+            checkout page-->
+<div v-else>
+  <!-- the code for the checkout page-->
+
   <div class="row slideanim">
-    <div class="col-sm-4 col-xs-12">
+    <div class="col-sm-2 col-xs-12">
       <div class="panel panel-default text-center">
         <div class="panel-heading">
           <h1></h1>
         </div>
         <div class="panel-body">
-          <p><strong>20</strong> Lorem</p>
-          <p><strong>15</strong> Ipsum</p>
-          <p><strong>5</strong> Dolor</p>
-          <p><strong>2</strong> Sit</p>
-          <p><strong>Endless</strong> Amet</p>
-        </div>
-        <div class="panel-footer">
-          <button class="btn add btn-lg">Add to Cart</button>
+
+  
+            <header>
+              
+            </header>
+
+        
+      
+
+               
+
+            <figure>
+                <!-- bind the 'src' attribute to the 'product.image' in 'data' -->
+                <img v-bind:src="product.image" width="100px" height="100px">
+            </figure>
+            <h2 v-text="product.subject"></h2>
+            <p v-html="product.location"></p>
+    
+            <!-- the double curly brackets is the shorter version of 'v-text'-->
+            <p>Price: £ {{product.price}}</p>
+
+            <p>Spaces: {{product.spaces}}</p>
+        
+          
+     
+          </div>
+          
+        
+         <div class="panel-footer">
+          <button class="btn add btn-lg"
+                 v-on:click="addToCart"
+                 v-if="canAddToCart">
+                 <!-- only show the button when 'canAddToCart' is true -->
+                 Remove</button>
+
+                 <!-- This button will be displayed otherwise-->
+                 <button class="btn add btn-lg"
+                         disabled='disabled' v-else>
+                   Remove
+                 </button>
         </div>
       </div>      
     </div>     
-    <div class="col-sm-4 col-xs-12">
-      <div class="panel panel-default text-center">
-        <div class="panel-heading">
-          <h1></h1>
-        </div>
-        <div class="panel-body">
-          <p><strong>50</strong> Lorem</p>
-          <p><strong>25</strong> Ipsum</p>
-          <p><strong>10</strong> Dolor</p>
-          <p><strong>5</strong> Sit</p>
-          <p><strong>Endless</strong> Amet</p>
-        </div>
-        <div class="panel-footer">
-          <button class="btn add btn-lg">Add to Cart</button>
-        </div>
-      </div>      
-    </div>       
-    <div class="col-sm-4 col-xs-12">
-      <div class="panel panel-default text-center">
-        <div class="panel-heading">
-          <h1></h1>
-        </div>
-        <div class="panel-body">
-          <p><strong>100</strong> Lorem</p>
-          <p><strong>50</strong> Ipsum</p>
-          <p><strong>25</strong> Dolor</p>
-          <p><strong>10</strong> Sit</p>
-          <p><strong>Endless</strong> Amet</p>
-        </div>
-        <div class="panel-footer">
-          <button class="btn add btn-lg">Add to Cart</button>
-        </div>
-      </div>      
-    </div>    
-  </div>
+   
+
 </div>
 
 
-<div id="pricing" class="container-fluid">
- 
-  <div class="row slideanim">
-    <div class="col-sm-4 col-xs-12">
-      <div class="panel panel-default text-center">
-        <div class="panel-heading">
-          <h1></h1>
-        </div>
-        <div class="panel-body">
-          <p><strong>20</strong> Lorem</p>
-          <p><strong>15</strong> Ipsum</p>
-          <p><strong>5</strong> Dolor</p>
-          <p><strong>2</strong> Sit</p>
-          <p><strong>Endless</strong> Amet</p>
-        </div>
-        <div class="panel-footer">
-          <button class="btn add btn-lg">Add to Cart</button>
-        </div>
-      </div>      
-    </div>     
-    <div class="col-sm-4 col-xs-12">
-      <div class="panel panel-default text-center">
-        <div class="panel-heading">
-          <h1></h1>
-        </div>
-        <div class="panel-body">
-          <p><strong>50</strong> Lorem</p>
-          <p><strong>25</strong> Ipsum</p>
-          <p><strong>10</strong> Dolor</p>
-          <p><strong>5</strong> Sit</p>
-          <p><strong>Endless</strong> Amet</p>
-        </div>
-        <div class="panel-footer">
-          <button class="btn add btn-lg">Add to Cart</button>
-        </div>
-      </div>      
-    </div>       
-    <div class="col-sm-4 col-xs-12">
-      <div class="panel panel-default text-center">
-        <div class="panel-heading">
-          <h1></h1>
-        </div>
-        <div class="panel-body">
-          <p><strong>100</strong> Lorem</p>
-          <p><strong>50</strong> Ipsum</p>
-          <p><strong>25</strong> Dolor</p>
-          <p><strong>10</strong> Sit</p>
-          <p><strong>Endless</strong> Amet</p>
-        </div>
-        <div class="panel-footer">
-          <button class="btn add btn-lg">Add to Cart</button>
-        </div>
-      </div>      
-    </div>    
-  </div>
+<div class="checkoutdisplay">
+  <h2>Checkout</h2>
+  <p>
+    <strong>Name:</strong>
+    <!-- This input field is bound to 'Name' in the 'order' object-->
+    <input v-model.trim="order.Name" />
+  </p>
+
+  <p>
+    <strong>Phone:</strong>
+     <!-- This input field is bound to 'Phone' in the 'order' object-->
+    <input v-model.number="order.phone" />
+  </p>
+
+   <!-- This displays Order Information-->
+   <h2>Order Information</h2>
+   <p>Name: {{order.Name}}</p>
+   <p>Phone: {{order.Phone}}</p>
+
+   <button class="btn add btn-lg" v-on:click="submitForm">Place Order</button>
+
+   </div>
+
 </div>
 
 
-<div id="pricing" class="container-fluid">
- 
-  <div class="row slideanim">
-    <div class="col-sm-4 col-xs-12">
-      <div class="panel panel-default text-center">
-        <div class="panel-heading">
-          <h1></h1>
-        </div>
-        <div class="panel-body">
-          <p><strong>20</strong> Lorem</p>
-          <p><strong>15</strong> Ipsum</p>
-          <p><strong>5</strong> Dolor</p>
-          <p><strong>2</strong> Sit</p>
-          <p><strong>Endless</strong> Amet</p>
-        </div>
-        <div class="panel-footer">
-          <button class="btn add btn-lg">Add to Cart</button>
-        </div>
-      </div>      
-    </div>  
-  </div>
 </div>
+
+
+
+
  
     
 
@@ -293,11 +253,12 @@
         
   </div>
           
-      </div>
-    </div>
-  </div>
-      </footer>
 
+    
+  
+      </footer>
+    
+  
 
 
       <script type="text/javascript">
@@ -305,17 +266,68 @@
             el: '#app',
               data: {
                   sitename: 'After School Lounge',
-                  product: {
+                  products = [
+                  {
+
                       id: 1001,
                       subject: "Maths",
                       location: "London",
                       price: 100,
                       image: "images/mathsicon.png",
-                      spaces: 5,
+                      availableInventory: 5
+
+                  },
+
+                  {
+                      id: 1002,
+                      subject: "Science",
+                      location: "London",
+                      price: 90,
+                      image: "images/scienceicon.jpeg",
+                      availableInventory: 5
 
                   }
+                ],
 
-              }
+                  cart: [], //array to store items in shopping cart
+                  showProduct: true,
+                  order: {
+                     Name: "",
+                     Phone:""
+                    
+                    }
+
+                  },
+                  methods: {
+                    addToCart: function () {
+                      this.cart.push(this.product.id);
+                    },
+
+                      showCheckout() {
+                        this.showProduct = this.showProduct ? false : true;
+                      
+                    },
+                    submitForm() {
+                      alert("Order submitted!");
+                          },
+                    
+                  },
+        
+
+
+                  computed: { // the Computed Property object
+                    cartItemCount: function() { // the property name
+                       // its value is calcuted when it is called
+                       return this.cart.length || '';
+
+                    },
+                    canAddToCart: function (){
+                      return this.product.availableInventory > this.cartItemCount;
+                    }
+                  },
+        
+
+              
         });
       </script>
 

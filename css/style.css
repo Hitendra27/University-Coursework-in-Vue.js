@@ -1,63 +1,59 @@
 /* This is our main css page */
 
+* {
+  box-sizing: border-box;
+  font-family: "Sansita Swashed", cursive;
+}
 
-* {box-sizing: border-box;
-   font-family: 'Sansita Swashed', cursive;}
-
-
-
-/* Remove the jumbotron's default bottom margin */ 
+/* Remove the jumbotron's default bottom margin */
 .jumbotron {
-    margin-bottom: 0;
-    background-color: #F4B41A;
-    color: #143D59;
-    font-family: 'Sansita Swashed', cursive;
-  }
+  margin-bottom: 0;
+  background-color: #f4b41a;
+  color: #143d59;
+  font-family: "Sansita Swashed", cursive;
+}
 
 /* Style for footer */
 .foot {
-    background-color: #143D59;
-    color: #F4B41A;
+  background-color: #143d59;
+  color: #f4b41a;
 }
 
 /* Style the icons */
 .icons {
-    font-size: 30px;
+  font-size: 30px;
 }
 
 /* Style the Add to Cart Button */
 .add {
-  background-color: #F4B41A;
+  background-color: #f4b41a;
   border: none;
-  color: #143D59;
+  color: #143d59;
   padding: 15px 25px;
   text-align: center;
   text-decoration: none;
   cursor: pointer;
-  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
 
 /* Style the Checkout Button */
 .checkout {
-  background-color: #143D59;
+  background-color: #143d59;
   border: none;
-  color: #F4B41A;
+  color: #f4b41a;
   padding: 15px 25px;
   padding-bottom: 10px;
   text-align: center;
   text-decoration: none;
   cursor: pointer;
-  display: flex; 
-  
-
+  display: flex;
 }
 
 /* Style the Checkout Button */
-.container1 { 
+.container1 {
   height: 100px;
   position: relative;
-  
 }
 
 /* Style the Checkout Button */
@@ -68,14 +64,16 @@
   left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  background-color: #143D59;
   border: none;
-  color: #F4B41A;
+  color: #143d59;
   text-align: center;
   text-decoration: none;
   cursor: pointer;
-  display: flex; 
+  display: flex;
   padding: 15px 25px;
 }
 
- 
+.checkoutdisplay {
+  text-align: center;
+  text-decoration: none;
+}
