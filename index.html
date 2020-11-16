@@ -55,7 +55,7 @@
       
       <button v-on:click='showCheckout'>
         <!-- 'cartItemCount' is used the same way as a data property.-->
-    {{cartItemCount}}
+    {{this.cart.length}}
         <!-- add the cart icon -->
         <span class="fas fa-shopping-cart"></span> Checkout
     </button>
@@ -72,12 +72,7 @@
   
             <header>
               
-            </header>
-
-        
-      
-
-               
+            </header>  
 
             <figure>
                 <!-- bind the 'src' attribute to the 'product.image' in 'data' -->
@@ -92,8 +87,8 @@
             <p>Spaces: {{product.spaces}}</p>
         
           <button class="btn add btn-lg"
-                 v-on:click="addToCart"
-                 v-if="canAddToCart">
+                 v-on:click="addToCart (product)"
+                 v-if="canAddToCart (product)">
                  <!-- only show the button when 'canAddToCart' is true -->
                  Add to cart</button>
 
@@ -102,6 +97,16 @@
                          disabled='disabled' v-else>
                    Add to cart
                  </button>
+                 <!-- Three different spans to show product availabliy -->
+                 <span v-if="product.availableInventory === cartCount(product.id)">
+                  All out!
+                </span>
+                <span
+                  v-else-if="product.availableInventory - cartCount(product.id) < 5"
+                >
+                  only {{product.availableInventory - cartCount(product.id)}} left!
+                </span>
+                <span v-else>Buy now!</span>
     
 
 </div>

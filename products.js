@@ -1,4 +1,4 @@
-
+  // Products in json format.
     let products = [
       {
         "id": 1001,
