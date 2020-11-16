@@ -268,17 +268,29 @@
 
                   },
                   methods: {
-                    addToCart: function () {
-                      this.cart.push(this.product.id);
-                    },
+                    addToCart: function (product) {
+                      this.cart.push(product.id);
+                         },
 
-                      showCheckout() {
+                    showCheckout() {
                         this.showProduct = this.showProduct ? false : true;
                       
-                    },
+                         },
                     submitForm() {
                       alert("Order submitted!");
                           },
+                    canAddToCart(product) {
+                         return product.availableInventory > this.cartCount(product.id);
+                           },
+                    cartCount(id) {
+                         let count = 0;
+                         for (let i = 0; i < this.cart.length; i++) {
+                         if (this.cart[i] === id) {
+                         count++;
+                           }
+                         }
+                         return count;
+                         },
                     
                   },
         
