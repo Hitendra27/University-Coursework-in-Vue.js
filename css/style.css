@@ -73,7 +73,28 @@
   padding: 15px 25px;
 }
 
+/* Style the checkout Button */
 .checkoutdisplay {
   text-align: center;
   text-decoration: none;
+}
+
+/* Style the products */
+.products {
+  width: 100%;
+  padding: 15px;
+  display: inline-block;
+}
+
+/* Style the lessons */
+.lessons {
+  display: inline-block;
+  padding: 15px;
+  width: 32.33%;
+  padding-bottom: 10px;
+  text-align: center;
+  border: 1px #143d59;
+  border-style: outset;
+  margin: 1px;
+  margin-top: 7px;
 }
