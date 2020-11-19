@@ -1,316 +1,325 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-   <!-- Bootstrap Link -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- Bootstrap Link -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
-  
-   <!-- Google Fonts-->
-   <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed&display=swap" rel="stylesheet">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-   <!-- Font Awesome Link-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <!-- Google Fonts-->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sansita+Swashed&display=swap"
+      rel="stylesheet"
+    />
 
-   <!-- Add icon library -->
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Font Awesome Link-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
 
-   <!-- CSS Link -->
-    <link rel="stylesheet"  type="text/css" href="css/style.css" />
+    <!-- Add icon library -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
 
-   <!-- Vue.js Link-->
+    <!-- CSS Link -->
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+
+    <!-- Vue.js Link-->
     <script src="https://unpkg.com/vue"></script>
 
     <!-- Products Link -->
     <script src="products.js"></script>
 
     <title>Vue.js</title>
-</head>
-<body>
-  <!-- div id app which connects to our vue-->
-  <div id="app"> 
-
-  <!-- Header jumbotron-->
-    <div class="jumbotron">
+  </head>
+  <body>
+    <!-- div id app which connects to our vue-->
+    <div id="app">
+      <!-- Header jumbotron-->
+      <div class="jumbotron">
         <div class="container text-center">
-          <h1 v-text="sitename"></h1>      
+          <h1 v-text="sitename"></h1>
           <p>"Mission, Vission & Values"</p>
         </div>
       </div>
 
- <!-- Container (Activities Section) -->
-<div id="pricing" class="container-fluid">
-  <div class="text-center">
-    <h2>Welcome</h2>
-    <h4>Choose a After School Plan that works for your child</h4>
-  </div>
-</div>
-
-  <!-- Checkout Button-->
-  <div class="container1">
-    <div class="center1">
-      
-      <button v-on:click='showCheckout'>
-        <!-- 'cartItemCount' is used the same way as a data property.-->
-    {{this.cart.length}}
-        <!-- add the cart icon -->
-        <span class="fas fa-shopping-cart"></span> Checkout
-    </button>
-  
-    </div>
-  </div>
-
-  <main>
-
-    <div class="products">
-
-    <div v-if="showProduct">
-      <div v-for="product in products" class="lessons">
-  
-            <header>
-              
-            </header>  
-
-            <figure>
-                <!-- bind the 'src' attribute to the 'product.image' in 'data' -->
-                <img v-bind:src="product.image" width="150px" height="150px">
-            </figure>
-            <h2 v-text="product.subject"></h2>
-            <p v-html="product.location"></p>
-    
-            <!-- the double curly brackets is the shorter version of 'v-text'-->
-            <p>Price: £ {{product.price}}</p>
-
-            <p>Spaces: {{product.spaces}}</p>
-        
-          <button class="btn add btn-lg"
-                 v-on:click="addToCart (product)"
-                 v-if="canAddToCart (product)">
-                 <!-- only show the button when 'canAddToCart' is true -->
-                 Add to cart</button>
-
-                 <!-- This button will be displayed otherwise-->
-                 <button class="btn add btn-lg"
-                         disabled='disabled' v-else>
-                   Add to cart
-                 </button>
-                 <!-- Three different spans to show product availabliy -->
-                 <span v-if="product.availableInventory === cartCount(product.id)">
-                  All out!
-                </span>
-                <span
-                  v-else-if="product.availableInventory - cartCount(product.id) < 5"
-                >
-                  only {{product.availableInventory - cartCount(product.id)}} left!
-                </span>
-                <span v-else>Buy now!</span>
-    
-
-</div>
-</div>
-    </div>
-
-
-
-
-
-<!-- The Checkout page every time we click on the 
-            checkout page-->
-<div v-else>
-  <!-- the code for the checkout page-->
-
-  <div class="row slideanim">
-    <div class="col-sm-2 col-xs-12">
-      <div class="panel panel-default text-center">
-        <div class="panel-heading">
-          <h1></h1>
+      <!-- Container (Activities Section) -->
+      <div id="pricing" class="container-fluid">
+        <div class="text-center">
+          <h2>Welcome</h2>
+          <h4>Choose a After School Plan that works for your child</h4>
         </div>
-        <div class="panel-body">
+      </div>
 
-  
-            <header>
-              
-            </header>
+      <!-- Checkout Button-->
+      <div class="container1">
+        <div class="center1">
+          <button v-on:click="showCheckout">
+            <!-- 'cartItemCount' is used the same way as a data property.-->
+            {{this.cart.length}}
+            <!-- add the cart icon -->
+            <span class="fas fa-shopping-cart"></span> Checkout
+          </button>
+        </div>
+      </div>
 
-        
-      
+      <main>
+        <div v-if="showProduct">
+          <div class="lessons1">
+            <div v-for="product in sortedproducts" class="lessons2">
+              <header></header>
 
-               
-
-            <figure>
+              <figure>
                 <!-- bind the 'src' attribute to the 'product.image' in 'data' -->
-                <img v-bind:src="product.image" width="100px" height="100px">
-            </figure>
-            <h2 v-text="product.subject"></h2>
-            <p v-html="product.location"></p>
-    
-            <!-- the double curly brackets is the shorter version of 'v-text'-->
-            <p>Price: £ {{product.price}}</p>
+                <img v-bind:src="product.image" width="150px" height="150px" />
+              </figure>
+              <h2 v-text="product.subject"></h2>
+              <p v-html="product.location"></p>
 
-            <p>Spaces: {{product.spaces}}</p>
-        
-          
-     
+              <!-- the double curly brackets is the shorter version of 'v-text'-->
+              <p>Price: £ {{product.price}}</p>
+
+              <p>Spaces: {{product.availableInventory}}</p>
+
+              <button
+                class="btn add btn-lg"
+                v-on:click="addToCart (product)"
+                v-if="canAddToCart (product)"
+              >
+                <!-- only show the button when 'canAddToCart' is true -->
+                Add to cart
+              </button>
+
+              <!-- This button will be displayed otherwise-->
+              <button class="btn add btn-lg" disabled="disabled" v-else>
+                Add to cart
+              </button>
+              <!-- Three different spans to show product availabliy -->
+              <span v-if="product.availableInventory === cartCount(product.id)">
+                All out!
+              </span>
+              <span
+                v-else-if="product.availableInventory - cartCount(product.id) < 5"
+              >
+                only {{product.availableInventory - cartCount(product.id)}}
+                left!
+              </span>
+              <span v-else>Buy now!</span>
+            </div>
           </div>
-          
-        
-         <div class="panel-footer">
-          <button class="btn add btn-lg"
-                 v-on:click="addToCart"
-                 v-if="canAddToCart">
-                 <!-- only show the button when 'canAddToCart' is true -->
-                 Remove</button>
-
-                 <!-- This button will be displayed otherwise-->
-                 <button class="btn add btn-lg"
-                         disabled='disabled' v-else>
-                   Remove
-                 </button>
         </div>
-      </div>      
-    </div>     
-   
 
-</div>
+        <!-- The Checkout page every time we click on the 
+            checkout page-->
+        <div v-else="showCart">
+          <div class="lessons1">
+            <div v-for="(product, index) in cart" class="cartItems">
+              <header></header>
 
+              <figure>
+                <!-- bind the 'src' attribute to the 'product.image' in 'data' -->
+                <img v-bind:src="product.image" width="150px" height="150px" />
+              </figure>
+              <h2 v-text="product.subject"></h2>
+              <p v-html="product.location"></p>
 
-<div class="checkoutdisplay">
-  <h2>Checkout</h2>
-  <p>
-    <strong>Name:</strong>
-    <!-- This input field is bound to 'Name' in the 'order' object-->
-    <input v-model.trim="order.Name" />
-  </p>
+              <!-- the double curly brackets is the shorter version of 'v-text'-->
+              <p>Price: £ {{product.price}}</p>
 
-  <p>
-    <strong>Phone:</strong>
-     <!-- This input field is bound to 'Phone' in the 'order' object-->
-    <input v-model.number="order.phone" />
-  </p>
+              <p>Spaces: {{product.availableInventory}}</p>
 
-   <!-- This displays Order Information-->
-   <h2>Order Information</h2>
-   <p>Name: {{order.Name}}</p>
-   <p>Phone: {{order.Phone}}</p>
+              <button
+                class="btn add btn-lg"
+                v-on:click="removeItemFromCart (product)"
+                v-if="canAddToCart (product)"
+              >
+                <!-- only show the button when 'canAddToCart' is true -->
+                Remove
+              </button>
+            </div>
+          </div>
 
-   <button class="btn add btn-lg" v-on:click="submitForm">Place Order</button>
+          <div class="checkoutdisplay">
+            <h2>Checkout</h2>
+            <p>
+              <strong>Name:</strong>
+              <!-- This input field is bound to 'Name' in the 'order' object-->
+              <input v-model.trim="order.Name" />
+            </p>
 
-   </div>
+            <p>
+              <strong>Phone:</strong>
+              <!-- This input field is bound to 'Phone' in the 'order' object-->
+              <input v-model.number="order.phone" />
+            </p>
 
-</div>
+            <!-- This displays Order Information-->
+            <h2>Order Information</h2>
+            <p>Name: {{order.Name}}</p>
+            <p>Phone: {{order.Phone}}</p>
 
-
-</div>
-
-
-
-
- 
-    
-
-
+            <button class="btn add btn-lg" v-on:click="submitForm">
+              Place Order
+            </button>
+          </div>
+        </div>
+      </main>
+    </div>
 
     <!-- Footer -->
-<footer class="container-fluid foot text-center ">
-  <div class="container-fluid bg-grey footer">
-    <div class="row">
-      <div class="col-sm-6">
-        <h2>CONTACT</h2><hr style="height:3px;background-color:#F4B41A;border:none; width: 30%;">
-        <p><span class="glyphicon glyphicon-map-marker"></span> The Burroughs, Hendon, London NW1 4BT</p>
-        <p><span class="glyphicon glyphicon-phone"></span> +44 020208354565</p>
-        <p><span class="glyphicon glyphicon-envelope"></span> afterschoollounge@gmail.com</p>
-      </div>
-      <div class="col-sm-6">
+    <footer class="container-fluid foot text-center">
+      <div class="container-fluid bg-grey footer">
         <div class="row">
-          <div class="col-sm-6 form-group">
-            <h2>FOLLOW US: </h2><hr style="height:3px;background-color:#F4B41A;border: none; width: 60%;">
-            <div class="icons">
-            <i class="fa fa-facebook-square"></i>
-            <i class="fa fa-twitter-square"></i>
-            <i class="fa fa-instagram"></i>
-            <i class="fa fa-google-plus-square"></i>
-            <i class="fa fa-linkedin-square"></i>
-            <i class="fa fa-pinterest-square"></i>
-            </div>
-            <P>2020 All Rights Reserved</p>
-  </div>
+          <div class="col-sm-6">
+            <h2>CONTACT</h2>
+            <hr
+              style="
+                height: 3px;
+                background-color: #f4b41a;
+                border: none;
+                width: 30%;
+              "
+            />
+            <p>
+              <span class="glyphicon glyphicon-map-marker"></span> The
+              Burroughs, Hendon, London NW1 4BT
+            </p>
+            <p>
+              <span class="glyphicon glyphicon-phone"></span> +44 020208354565
+            </p>
+            <p>
+              <span class="glyphicon glyphicon-envelope"></span>
+              afterschoollounge@gmail.com
+            </p>
           </div>
-  </div>
-  </div>
-        
-  </div>
-          
+          <div class="col-sm-6">
+            <div class="row">
+              <div class="col-sm-6 form-group">
+                <h2>FOLLOW US:</h2>
+                <hr
+                  style="
+                    height: 3px;
+                    background-color: #f4b41a;
+                    border: none;
+                    width: 60%;
+                  "
+                />
+                <div class="icons">
+                  <i class="fa fa-facebook-square"></i>
+                  <i class="fa fa-twitter-square"></i>
+                  <i class="fa fa-instagram"></i>
+                  <i class="fa fa-google-plus-square"></i>
+                  <i class="fa fa-linkedin-square"></i>
+                  <i class="fa fa-pinterest-square"></i>
+                </div>
+                <p>2020 All Rights Reserved</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
 
-    
-  
-      </footer>
-    
-  
+    <script type="text/javascript">
+      let webstore = new Vue({
+        el: "#app",
+        data: {
+          sitename: "After School Lounge",
 
+          products: products, //products stored in json format in product.js file
+          cart: [], //array to store items in shopping cart
+          showProduct: true,
+          showCart: true,
+          order: {
+            Name: "",
+            Phone: "",
+          },
+        },
 
-      <script type="text/javascript">
-        let webstore = new Vue({
-            el: '#app',
-              data: {
-                  sitename: 'After School Lounge',
+        methods: {
+          addToCart: function (product) {
+            this.cart.push(product);
+          },
 
-                  products: products, //products stored in json format in product.js file
-                  cart: [], //array to store items in shopping cart
-                  showProduct: true,
-                  order: {
-                     Name: "",
-                     Phone:""
-                    
-                    }
+          // addToCart(product) {
+          // if (this.product.availableInventory > 0) {
+          //  this.product.availableInventory--;
+          //}
+          //},
 
-                  },
-                  methods: {
-                    addToCart: function (product) {
-                      this.cart.push(product.id);
-                         },
+          //addToCart: function (product) {
+          //if (this.product.availableInventory == 0) {
+          // return;
+          // } else {
+          //this.product.availableInventory = this.product.availableInventory - 1;
+          //}
 
-                    showCheckout() {
-                        this.showProduct = this.showProduct ? false : true;
-                      
-                         },
-                    submitForm() {
-                      alert("Order submitted!");
-                          },
-                    canAddToCart(product) {
-                         return product.availableInventory > this.cartCount(product.id);
-                           },
-                    cartCount(id) {
-                         let count = 0;
-                         for (let i = 0; i < this.cart.length; i++) {
-                         if (this.cart[i] === id) {
-                         count++;
-                           }
-                         }
-                         return count;
-                         },
-                    
-                  },
-        
+          // },
 
+          showCheckout() {
+            this.showProduct = this.showProduct ? false : true;
+          },
+          submitForm() {
+            alert("Order submitted!");
+          },
 
-                  computed: { // the Computed Property object
-                   // cartItemCount: function() { // the property name
-                       // its value is calcuted when it is called
-                      // return this.cart.length || '';
+          canAddToCart(product) {
+            return product.availableInventory > this.cartCount(product.id);
+          },
 
-                   // },
-                   // canAddToCart: function (){
-                   //   return this.product.availableInventory > this.cartItemCount;
-                  //  }
-                  },
-        
+          cartCount(id) {
+            let count = 0;
+            for (let i = 0; i < this.cart.length; i++) {
+              if (this.cart[i] === id) {
+                count++;
+              }
+            }
+            return count;
+          },
 
-              
-        });
-      </script>
+          removeItemFromCart(product) {
+            this.cart.splice(this.cart.indexOf(product), 1);
+          },
+        },
 
-</body>
+        computed: {
+          // the Computed Property object
+          addToCart: function (product) {
+            if (this.product.availableInventory == 0) {
+              return;
+            } else {
+              this.product.availableInventory =
+                this.product.availableInventory - 1;
+            }
+          },
+
+          sortedproducts() {
+            let productsArray = this.products.slice(0);
+            function compare(a, b) {
+              if (a.price > b.price) return -1;
+              return 0;
+            }
+            return productsArray.sort(compare);
+          },
+
+          // cartItemCount: function() { // the property name
+          // its value is calcuted when it is called
+          // return this.cart.length || '';
+          // },
+          // canAddToCart: function (){
+          //   return this.product.availableInventory > this.cartItemCount;
+          //  }
+        },
+      });
+    </script>
+  </body>
 </html>

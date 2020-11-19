@@ -6,7 +6,7 @@
         "location": "London",
         "price": 100,
         "image": "images/mathsicon.png",
-        "availableInventory": 10
+        "availableInventory": 8
         
       },
       {
@@ -24,7 +24,7 @@
         "location": "London",
         "price": 80,
         "image": "images/scienceicon.jpeg",
-        "availableInventory": 10
+        "availableInventory": 7
       },
       {
         "id": 1004,
@@ -32,7 +32,7 @@
         "location": "London",
         "price": 100,
         "image": "images/spanishicon.png",
-        "availableInventory": 10
+        "availableInventory": 6
       },
       {
         "id": 1005,
@@ -40,7 +40,7 @@
         "location": "London",
         "price": 90,
         "image": "images/geographyicon.png",
-        "availableInventory": 10
+        "availableInventory": 9
       },
       {
         "id": 1006,
@@ -48,7 +48,7 @@
         "location": "London",
         "price": 80,
         "image": "images/pianoicon.png",
-        "availableInventory": 10
+        "availableInventory": 8
       },
       {
         "id": 1007,
@@ -64,7 +64,7 @@
         "location": "London",
         "price": 100,
         "image": "images/frenchicon.png",
-        "availableInventory": 10
+        "availableInventory": 7
       },
       {
         "id": 1009,
@@ -72,7 +72,7 @@
         "location": "London",
         "price": 90,
         "image": "images/arts.jpg",
-        "availableInventory": 10
+        "availableInventory": 9
       },
       {
         "id": 1010,
@@ -80,7 +80,7 @@
         "location": "London",
         "price": 80,
         "image": "images/history.jpg",
-        "availableInventory": 10
+        "availableInventory": 6
       }
     ]
   
