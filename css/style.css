@@ -104,9 +104,12 @@
 /* Style the cartItems */
 .cartItems {
   width: 24%;
+  padding: 10px;
   display: inline-block;
   text-align: center;
   margin: 1px;
   margin-top: 7px;
+  border: 1px #143d59;
   border-radius: 8px;
+  border-style: outset;
 }

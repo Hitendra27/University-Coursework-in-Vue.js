@@ -23,6 +23,11 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
     />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"
+      integrity="sha512-90vH1Z83AJY9DmlWa8WkjkV79yfS2n2Oxhsi2dZbIv0nC4E6m5AbH8Nh156kkM7JePmqD6tcZsfad1ueoaovww=="
+      crossorigin="anonymous"
+    ></script>
 
     <!-- Add icon library -->
     <link
@@ -72,6 +77,67 @@
         </div>
       </div>
 
+      <!-- Sorting section-->
+      <div class="container">
+        <form>
+          <h5>Sorting Base</h5>
+          <label class="radio-inline">
+            <input
+              type="radio"
+              name="optradio"
+              v-model="base"
+              value="subject"
+              checked
+            />Subject
+          </label>
+          <label class="radio-inline">
+            <input
+              type="radio"
+              name="optradio"
+              v-model="base"
+              value="location"
+            />Location
+          </label>
+          <label class="radio-inline">
+            <input
+              type="radio"
+              name="optradio"
+              v-model="base"
+              value="price"
+            />Price
+          </label>
+          <label class="radio-inline">
+            <input
+              type="radio"
+              name="optradio"
+              v-model="base"
+              value="availableInventory"
+            />Availability
+          </label>
+          <br />
+          Sorting type:
+          <br />
+          <label class="radio-inline">
+            <input
+              type="radio"
+              name="sortingType"
+              checked
+              v-model="type"
+              value="asc"
+            />Ascending
+          </label>
+          <label class="radio-inline">
+            <input
+              type="radio"
+              name="sortingType"
+              v-model="type"
+              value="desc"
+            />Descending
+          </label>
+        </form>
+      </div>
+      <!-- End of Sorting section-->
+
       <main>
         <div v-if="showProduct">
           <div class="lessons1">
@@ -120,7 +186,7 @@
 
         <!-- The Checkout page every time we click on the 
             checkout page-->
-        <div v-else="showCart">
+        <div v-else>
           <div class="lessons1">
             <div v-for="(product, index) in cart" class="cartItems">
               <header></header>
@@ -140,7 +206,6 @@
               <button
                 class="btn add btn-lg"
                 v-on:click="removeItemFromCart (product)"
-                v-if="canAddToCart (product)"
               >
                 <!-- only show the button when 'canAddToCart' is true -->
                 Remove
@@ -167,7 +232,12 @@
             <p>Name: {{order.Name}}</p>
             <p>Phone: {{order.Phone}}</p>
 
-            <button class="btn add btn-lg" v-on:click="submitForm">
+            <!-- order place button is only visible when valid name and phone number is typed-->
+            <button
+              class="btn add btn-lg"
+              v-on:click="submitForm"
+              v-if="orderPlaceButtonVisibility"
+            >
               Place Order
             </button>
           </div>
@@ -229,6 +299,7 @@
       </div>
     </footer>
 
+    <!-- Script for Vue -->
     <script type="text/javascript">
       let webstore = new Vue({
         el: "#app",
@@ -238,45 +309,46 @@
           products: products, //products stored in json format in product.js file
           cart: [], //array to store items in shopping cart
           showProduct: true,
-          showCart: true,
+          showCart: false,
           order: {
             Name: "",
             Phone: "",
           },
+          base: "subject",
+          type: "asc",
         },
 
         methods: {
+          //function for addToCart Button.
           addToCart: function (product) {
+            products.map((item) => {
+              if (item.id === product.id) {
+                item.availableInventory -= 1;
+              }
+            });
             this.cart.push(product);
           },
 
-          // addToCart(product) {
-          // if (this.product.availableInventory > 0) {
-          //  this.product.availableInventory--;
-          //}
-          //},
-
-          //addToCart: function (product) {
-          //if (this.product.availableInventory == 0) {
-          // return;
-          // } else {
-          //this.product.availableInventory = this.product.availableInventory - 1;
-          //}
-
-          // },
-
           showCheckout() {
-            this.showProduct = this.showProduct ? false : true;
+            //function for showCheckout Button.
+            if (this.cart.length > 0) {
+              this.showProduct = !this.showProduct;
+              this.showCart = !this.showCart;
+            }
           },
+
           submitForm() {
+            //function for order place Button.
             alert("Order submitted!");
           },
 
           canAddToCart(product) {
+            // function for canAddToCart Button.
             return product.availableInventory > this.cartCount(product.id);
           },
 
           cartCount(id) {
+            //function for cartCount.
             let count = 0;
             for (let i = 0; i < this.cart.length; i++) {
               if (this.cart[i] === id) {
@@ -287,12 +359,28 @@
           },
 
           removeItemFromCart(product) {
+            //function for remove Button.
             this.cart.splice(this.cart.indexOf(product), 1);
+            if (this.cart.length < 1) {
+              this.showProduct = true;
+              this.showCart = false;
+            }
           },
         },
 
         computed: {
-          // the Computed Property object
+          // the Computed Property object.
+
+          //the place button will only be visible when phone number is valid and more than 8 digits.
+          orderPlaceButtonVisibility: function () {
+            console.log(typeof this.order.Phone);
+            return typeof this.order.Phone === "number" &&
+              this.order.Name.length > 3 &&
+              this.order.Phone.toString().length > 8
+              ? true
+              : false;
+          },
+
           addToCart: function (product) {
             if (this.product.availableInventory == 0) {
               return;
@@ -302,22 +390,10 @@
             }
           },
 
+          //the products will be sorted.
           sortedproducts() {
-            let productsArray = this.products.slice(0);
-            function compare(a, b) {
-              if (a.price > b.price) return -1;
-              return 0;
-            }
-            return productsArray.sort(compare);
+            return _.orderBy(this.products, [this.base], [this.type]);
           },
-
-          // cartItemCount: function() { // the property name
-          // its value is calcuted when it is called
-          // return this.cart.length || '';
-          // },
-          // canAddToCart: function (){
-          //   return this.product.availableInventory > this.cartItemCount;
-          //  }
         },
       });
     </script>

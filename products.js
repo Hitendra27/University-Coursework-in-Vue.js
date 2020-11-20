@@ -1,4 +1,4 @@
-  // Products in json format.
+ // Products in json format.
     let products = [
       {
         "id": 1001,
@@ -12,7 +12,7 @@
       {
         "id": 1002,
         "subject": "English",
-        "location": "London",
+        "location": "Birmingham",
         "price": 90,
         "image": "images/englishicon.jpeg",
         "availableInventory": 10
@@ -29,7 +29,7 @@
       {
         "id": 1004,
         "subject": "Spanish",
-        "location": "London",
+        "location": "Leicester",
         "price": 100,
         "image": "images/spanishicon.png",
         "availableInventory": 6
@@ -37,7 +37,7 @@
       {
         "id": 1005,
         "subject": "Geography",
-        "location": "London",
+        "location": "Manchester",
         "price": 90,
         "image": "images/geographyicon.png",
         "availableInventory": 9
@@ -45,7 +45,7 @@
       {
         "id": 1006,
         "subject": "Piano",
-        "location": "London",
+        "location": "Leicester",
         "price": 80,
         "image": "images/pianoicon.png",
         "availableInventory": 8
@@ -53,8 +53,8 @@
       {
         "id": 1007,
         "subject": "Guitar",
-        "location": "London",
-        "price": 80,
+        "location": "Manchester",
+        "price": 70,
         "image": "images/guitaricon.jpeg",
         "availableInventory": 10
       },
@@ -69,7 +69,7 @@
       {
         "id": 1009,
         "subject": "Arts",
-        "location": "London",
+        "location": "Newcastle",
         "price": 90,
         "image": "images/arts.jpg",
         "availableInventory": 9
@@ -77,8 +77,8 @@
       {
         "id": 1010,
         "subject": "History",
-        "location": "London",
-        "price": 80,
+        "location": "Newcastle",
+        "price": 70,
         "image": "images/history.jpg",
         "availableInventory": 6
       }
