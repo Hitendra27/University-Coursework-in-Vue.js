@@ -306,7 +306,7 @@
         data: {
           sitename: "After School Lounge",
 
-          products: products, //products stored in json format in product.js file
+          products: [], //products stored in json format in product.js file
           cart: [], //array to store items in shopping cart
           showProduct: true,
           showCart: false,
@@ -316,6 +316,20 @@
           },
           base: "subject",
           type: "asc",
+        },
+
+        created: function () {
+          // this function will be run automatically
+          // when creating the Vue instance.
+          fetch("https://cst3145express.herokuapp.com/collection/lesson").then(
+            (response) => {
+              response.json().then((json) => {
+                // save the returned JSON object to 'product'
+                // note that we used 'webstore.product' instead of this.product'
+                webstore.products = json;
+              });
+            }
+          );
         },
 
         methods: {
