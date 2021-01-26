@@ -335,7 +335,7 @@
         methods: {
           //function for addToCart Button.
           addToCart: function (product) {
-            products.map((item) => {
+            this.products.map((item) => {
               if (item.id === product.id) {
                 item.availableInventory -= 1;
               }
@@ -353,7 +353,46 @@
 
           submitForm() {
             //function for order place Button.
-            alert("Order submitted!");
+            this.cart.map((item) => {
+              let obj = {
+                lesson: item._id,
+                name: this.name,
+                phone: this.phone,
+                space: 1,
+              };
+              fetch("http://localhost:3000/order", {
+                method: "POST", // POST method.
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(obj),
+              })
+                .then((response) => response.json())
+                .then((data) => {
+                  const putMethod = {
+                    method: "PUT", // Method itself
+                    headers: {
+                      "Content-type": "application/json; charset=UTF-8", // Indicates the content
+                    },
+                    body: JSON.stringify({ lesson: obj.lesson }), // We send data in JSON format
+                  };
+                  // make the HTTP put request using fetch api
+                  fetch("http://localhost:3000/lessonupdate", putMethod)
+                    .then((response) => response.json())
+                    .then((data) => {
+                      this.showProduct = true;
+                      this.showCart = false;
+                      this.cart = [];
+                      this.getProducts();
+                    }) // Manipulate the data retrieved back, if we want to do something with it
+                    .catch((err) => console.log(err));
+                })
+                .catch((error) => {
+                  console.error("Error:", error);
+
+                  alert("Your order Cannot be submitted!");
+                });
+            });
           },
 
           canAddToCart(product) {
