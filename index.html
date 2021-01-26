@@ -356,15 +356,16 @@
             this.cart.map((item) => {
               let obj = {
                 lesson: item._id,
-                name: this.name,
-                phone: this.phone,
+                name: this.order.Name,
+                phone: this.order.Phone,
                 space: 1,
               };
-              fetch("http://localhost:3000/order", {
-                method: "POST", // POST method.
+              fetch("https://cst3145express.herokuapp.com/collection/order", {
+                method: "POST", // or 'PUT'
                 headers: {
                   "Content-Type": "application/json",
                 },
+
                 body: JSON.stringify(obj),
               })
                 .then((response) => response.json())
@@ -377,13 +378,19 @@
                     body: JSON.stringify({ lesson: obj.lesson }), // We send data in JSON format
                   };
                   // make the HTTP put request using fetch api
-                  fetch("http://localhost:3000/lessonupdate", putMethod)
+                  fetch(
+                    "https://cst3145express.herokuapp.com/collection/lesson",
+                    putMethod
+                  )
                     .then((response) => response.json())
                     .then((data) => {
                       this.showProduct = true;
                       this.showCart = false;
                       this.cart = [];
-                      this.getProducts();
+                      //this.getProducts();
+                    })
+                    .then(() => {
+                      alert("your order is confirmed");
                     }) // Manipulate the data retrieved back, if we want to do something with it
                     .catch((err) => console.log(err));
                 })
