@@ -40,7 +40,6 @@
 
     <!-- Vue.js Link-->
     <script src="https://unpkg.com/vue"></script>
-    
 
     <title>Vue.js</title>
   </head>
@@ -368,6 +367,8 @@
               })
                 .then((response) => response.json())
                 .then((data) => {
+                  this.order.Name = "";
+                  this.order.Phone = "";
                   const putMethod = {
                     method: "PUT", // Method itself
                     headers: {
