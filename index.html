@@ -41,8 +41,15 @@
     <!-- Vue.js Link-->
     <script src="https://unpkg.com/vue"></script>
 
-    <!-- Manifest link-->
-    <link rel="manifest" href="afterschool.webmanifest">
+    <!-- Manifest Link-->
+    <link rel="manifest" href="afterschool.webmanifest" />
+
+    <!-- Service Worker Link-->
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("service-worker.js");
+      }
+    </script>
 
     <title>Vue.js</title>
   </head>
