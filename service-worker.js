@@ -2,7 +2,7 @@ var cacheName = 'webstore-v1';
 var cacheFiles = [
     'index.html',
     'https://cst3145express.herokuapp.com/collection/lesson',
-    'afterschool.webmnifest',
+    'afterschool.webmanifest',
     'images/arts.jpg',
     'images/classroom.png',
     'images/englishicon.jpeg',
