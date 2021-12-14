@@ -52,3 +52,13 @@ remaining space by one; • Shopping cart (5%)
 vided;
 – Clicking the ’checkout’ button should display a message confirming the order has
   been submitted.
+  
+  Screenshots of the Coursework.
+  
+  Screenshot 2021-12-14 at 18.53.10<img width="1440" alt="Screenshot 2021-12-14 at 18 53 10" src="https://user-images.githubusercontent.com/73651340/146061672-f5ed6c46-9325-460f-9d13-1459d8edb27f.png">
+
+Screenshot 2021-12-14 at 18.53.16<img width="1440" alt="Screenshot 2021-12-14 at 18 53 16" src="https://user-images.githubusercontent.com/73651340/146061726-17fb9dff-9dc3-4e2d-a09f-410d0aa3a308.png">
+
+Screenshot 2021-12-14 at 18.53.24<img width="1440" alt="Screenshot 2021-12-14 at 18 53 24" src="https://user-images.githubusercontent.com/73651340/146061792-e71c2c55-37af-481a-ad97-1b40864582e5.png">
+
+Screenshot 2021-12-14 at 18.53.56<img width="1440" alt="Screenshot 2021-12-14 at 18 53 56" src="https://user-images.githubusercontent.com/73651340/146061846-3c905af6-104a-4a00-ba96-bc629f50d40f.png">
