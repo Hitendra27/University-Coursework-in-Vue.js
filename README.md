@@ -16,46 +16,10 @@ A submission will receive zero mark if it fails any of the requirements below:
 • The work cannot be explained satisfactorily during the in-lab demonstration, i.e., stu-
 dent cannot explain what the code does.
 
-
-Criteria
-• Display lessons (5%)
-– –
-–
-–
-• Sort –
-–
-There should be at least 10 lessons and each lesson has 5 spaces; Each lesson should have at least:
-∗ Subject;
-∗ Location;
-∗ Price;
-∗ Space (how many spaces are left); ∗ A image or icon.
-The list of lessons must be stored as an array of JSON objects, one object for each lesson, in a separate JavaScript file, such as lessons.js;
-v-for has to be used for the display of the lesson list.
-(5%)
-User can choose to sort the lessons by one of the following attributes: subject, location, price, or availability;
-There must be an option to sort in ascending or descending order, regardless of the attribute selected;
-• Add to cart (5%)
-– Each lesson must have a ’Add to Cart’ button;
-– The button is only visible when there is still space available;
-– Clicking the button once will add one space to the shopping cart, reducing the
-remaining space by one; • Shopping cart (5%)
-– The shopping cart button should only be visible after at least one lesson is added to cart;
-– Clicking the shopping cart button should go to a new page, with a button to go back to the lesson page;
-– The shopping cart should show all the lessons added;
-– User should be able to remove lesson from shopping cart. • Checkout (5%)
-– The checkout is part of the shopping cart page;
-– A user must provide the following information before he/she can check out:
-∗ Name;
-∗ Phone;
-– The ’Name’ must be letters only and the ’Phone’ must be numbers only;
-– The ’checkout’ button is only visible after both valid ’name’ and ’phone’ are pro-
-vided;
-– Clicking the ’checkout’ button should display a message confirming the order has
-  been submitted.
   
-  Screenshots of the Coursework.
+Screenshots of the Coursework.
   
-  Screenshot 2021-12-14 at 18.53.10<img width="1440" alt="Screenshot 2021-12-14 at 18 53 10" src="https://user-images.githubusercontent.com/73651340/146061672-f5ed6c46-9325-460f-9d13-1459d8edb27f.png">
+ Screenshot 2021-12-14 at 18.53.10<img width="1440" alt="Screenshot 2021-12-14 at 18 53 10" src="https://user-images.githubusercontent.com/73651340/146061672-f5ed6c46-9325-460f-9d13-1459d8edb27f.png">
 
 Screenshot 2021-12-14 at 18.57.53<img width="1440" alt="Screenshot 2021-12-14 at 18 57 53" src="https://user-images.githubusercontent.com/73651340/146062101-f48ba89c-318c-4c99-8d0e-879d98cf0923.png">
 
